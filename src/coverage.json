@@ -1,58 +1,43 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-07T08:09:18.781Z",
+  "generatedAt": "2026-02-07T10:08:08.238Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 3,
+    "total": 2,
     "implemented": 2,
     "items": [
       {
-        "id": "REQ-1",
-        "summary": "Expand the backend default course seeding so the app includes a comprehensive set of higher-education courses across Science, Arts, and Commerce categories, covering Undergraduate, Postgraduate, and Doctoral levels (in addition to the currently seeded items). Add commonly expected degree programs such as B.C.A., B.B.A., M.B.A., M.C.A., LL.B., LL.M., B.Ed., M.Ed., B.Pharm, M.Pharm, MBBS, and other widely recognized higher-education programs; ensure each added course has a non-empty title and description and uses the existing Category and Level enums.",
-        "status": "unknown",
-        "plannedFiles": [],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-2",
-        "summary": "Update the Courses UI to display icons for any newly added course titles by extending the existing title->icon mapping, and ensure all new courses render correctly in the courses grid with their category badge and description (no broken image icons).",
+        "id": "REQ-28",
+        "summary": "Investigate and fix the deployment error that is preventing the project from deploying successfully, and ensure the standard build + deploy workflow completes without errors for both the Motoko backend canister and the React frontend assets.",
         "status": "implemented",
         "plannedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/backend.ts",
+          "frontend/src/config.ts",
+          "frontend/src/hooks/useActor.ts",
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/components/SubjectCard.tsx",
+          "frontend/src/components/Hero.tsx",
+          "frontend/src/components/SubjectsSection.tsx",
           "frontend/src/components/CoursesSection.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/CoursesSection.tsx"
+          "frontend/src/components/SubjectCard.tsx"
         ]
       },
       {
-        "id": "REQ-3",
-        "summary": "Add any missing static icon assets required by the updated course icon mapping as generated images under frontend/public/assets/generated and ensure the filenames match the mapping used in the UI.",
+        "id": "REQ-29",
+        "summary": "Add a lightweight, developer-facing deployment troubleshooting note (in-repo documentation) describing the resolved root cause and the steps to reproduce a successful build and deploy going forward.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/public/assets/generated/mba-icon-transparent.dim_64x64.png",
-          "frontend/public/assets/generated/mca-icon-transparent.dim_64x64.png",
-          "frontend/public/assets/generated/llb-icon-transparent.dim_64x64.png",
-          "frontend/public/assets/generated/llm-icon-transparent.dim_64x64.png",
-          "frontend/public/assets/generated/bed-icon-transparent.dim_64x64.png",
-          "frontend/public/assets/generated/med-icon-transparent.dim_64x64.png",
-          "frontend/public/assets/generated/mbbs-icon-transparent.dim_64x64.png",
-          "frontend/public/assets/generated/bpharm-icon-transparent.dim_64x64.png",
-          "frontend/public/assets/generated/mpharm-icon-transparent.dim_64x64.png"
+          "frontend/DEPLOYMENT_TROUBLESHOOTING.md"
         ],
         "matchedFiles": [
-          "frontend/public/assets/generated/mba-icon-transparent.dim_64x64.png",
-          "frontend/public/assets/generated/mca-icon-transparent.dim_64x64.png",
-          "frontend/public/assets/generated/llb-icon-transparent.dim_64x64.png",
-          "frontend/public/assets/generated/llm-icon-transparent.dim_64x64.png",
-          "frontend/public/assets/generated/bed-icon-transparent.dim_64x64.png",
-          "frontend/public/assets/generated/med-icon-transparent.dim_64x64.png",
-          "frontend/public/assets/generated/mbbs-icon-transparent.dim_64x64.png",
-          "frontend/public/assets/generated/bpharm-icon-transparent.dim_64x64.png",
-          "frontend/public/assets/generated/mpharm-icon-transparent.dim_64x64.png"
+          "frontend/DEPLOYMENT_TROUBLESHOOTING.md"
         ]
       }
     ]
@@ -60,30 +45,14 @@
   "changedFiles": [
     "backend/main.mo",
     "build-request.json",
-    "build-template/Dockerfile",
-    "build-template/LICENSE",
-    "build-template/README.md",
-    "build-template/deploy.sh",
-    "build-template/icp.yaml",
-    "build-template/src/backend/canister.yaml",
-    "build-template/src/frontend/canister.yaml",
-    "caffeine.lock.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/public/assets/generated/bba-icon-transparent.dim_64x64.png",
-    "frontend/public/assets/generated/bca-icon-transparent.dim_64x64.png",
-    "frontend/public/assets/generated/bed-icon-transparent.dim_64x64.png",
-    "frontend/public/assets/generated/bpharm-icon-transparent.dim_64x64.png",
-    "frontend/public/assets/generated/llb-icon-transparent.dim_64x64.png",
-    "frontend/public/assets/generated/llm-icon-transparent.dim_64x64.png",
-    "frontend/public/assets/generated/mba-icon-transparent.dim_64x64.png",
-    "frontend/public/assets/generated/mbbs-icon-transparent.dim_64x64.png",
-    "frontend/public/assets/generated/mca-icon-transparent.dim_64x64.png",
-    "frontend/public/assets/generated/med-icon-transparent.dim_64x64.png",
-    "frontend/public/assets/generated/mpharm-icon-transparent.dim_64x64.png",
-    "frontend/src/components/CoursesSection.tsx",
-    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/DEPLOYMENT_TROUBLESHOOTING.md",
+    "frontend/public/env.json",
+    "frontend/src/backend.did.ts",
+    "frontend/src/components/SubjectCard.tsx",
+    "frontend/src/utils/urlParams.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

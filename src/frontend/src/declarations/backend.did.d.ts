@@ -16,8 +16,10 @@ export type Category = { 'Arts' : null } |
 export interface Course {
   'id' : bigint,
   'title' : string,
+  'priceInINR' : [] | [bigint],
   'description' : string,
   'level' : Level,
+  'subjectId' : [] | [string],
   'category' : Category,
 }
 export type ExternalBlob = Uint8Array;
@@ -68,7 +70,10 @@ export interface _SERVICE {
   >,
   '_caffeineStorageUpdateGatewayPrincipals' : ActorMethod<[], undefined>,
   '_initializeAccessControlWithSecret' : ActorMethod<[string], undefined>,
-  'addCourse' : ActorMethod<[string, string, Category, Level], undefined>,
+  'addCourse' : ActorMethod<
+    [string, string, Category, Level, [] | [string], [] | [bigint]],
+    undefined
+  >,
   'addDefaultCourses' : ActorMethod<[], undefined>,
   'addTopicToSubject' : ActorMethod<
     [SubjectIdentifier, TopicIdentifier, Topic],
@@ -77,12 +82,13 @@ export interface _SERVICE {
   'assignCallerUserRole' : ActorMethod<[Principal, UserRole], undefined>,
   'courseExists' : ActorMethod<[Category, Level], boolean>,
   'getAllCourses' : ActorMethod<[], Array<Course>>,
+  'getAllCoursesBySubject' : ActorMethod<[string], Array<Course>>,
   'getCallerUserProfile' : ActorMethod<[], [] | [UserProfile]>,
   'getCallerUserRole' : ActorMethod<[], UserRole>,
   'getCourse' : ActorMethod<[bigint], Course>,
   'getCoursesByCategory' : ActorMethod<[Category], Array<Course>>,
   'getSubjectContent' : ActorMethod<[SubjectIdentifier], SubjectContent>,
-  'getSubjectDescription' : ActorMethod<[SubjectIdentifier], string>,
+  'getSubjectsByCategory' : ActorMethod<[Category], Array<SubjectIdentifier>>,
   'getTopic' : ActorMethod<[TopicIdentifier], Topic>,
   'getTopicsBySubject' : ActorMethod<
     [SubjectIdentifier],
@@ -91,7 +97,10 @@ export interface _SERVICE {
   'getUserProfile' : ActorMethod<[Principal], [] | [UserProfile]>,
   'isCallerAdmin' : ActorMethod<[], boolean>,
   'saveCallerUserProfile' : ActorMethod<[UserProfile], undefined>,
-  'setSubjectDescription' : ActorMethod<[SubjectIdentifier, string], undefined>,
+  'setSubjectContent' : ActorMethod<
+    [SubjectIdentifier, SubjectContent],
+    undefined
+  >,
 }
 export declare const idlService: IDL.ServiceClass;
 export declare const idlInitArgs: IDL.Type[];

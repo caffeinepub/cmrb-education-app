@@ -1,75 +1,76 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Higher-education course catalog UI icon support",
+  "title": "Fix frontend build blockers and document successful IC build/deploy workflow",
   "requirements": [
     {
-      "id": "REQ-2",
-      "summary": "Extend Courses UI title-to-icon mapping and ensure new courses render with badges/descriptions without broken icons.",
+      "id": "REQ-28",
+      "summary": "Resolve frontend build/runtime errors blocking successful deploy and ensure the app renders Hero, Subjects, and Courses sections without crashes.",
       "acceptanceCriteria": [
-        "For every newly added course title that is seeded by the backend, the Courses section either shows the correct course icon (if provided) or omits the icon gracefully (no broken image placeholder).",
-        "The Courses section lists the newly seeded higher-education courses after data refresh, with category badges displayed and descriptions visible (line-clamped as currently implemented)."
+        "A clean build completes for both backend and frontend with no errors.",
+        "A deploy completes successfully (no deployment error) and produces a reachable, functioning app.",
+        "The deployed app loads in the browser and can render the main sections (Hero, Subjects, Courses) without runtime crashes."
       ],
       "file_operations": [
         {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Fix TypeScript build failures by removing unused imports (e.g., unused React Query provider symbols) and ensuring the root component compiles cleanly."
+        },
+        {
+          "path": "frontend/src/backend.ts",
+          "operation": "create",
+          "description": "Add a concrete TypeScript module that exports the backend-facing types/enums/interfaces used across the app (e.g., Category, Level, Course, SubjectContent, and backendInterface), aligning with frontend/src/backend.d.ts so imports like \"../backend\" resolve during build."
+        },
+        {
+          "path": "frontend/src/config.ts",
+          "operation": "create",
+          "description": "Use the core-infrastructure component to provide backend connection configuration and an exported createActorWithConfig + loadConfig used by hooks. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useActor.ts",
+          "operation": "modify",
+          "description": "Update actor initialization to use the new frontend/src/config.ts implementation, and ensure any access-control initialization call is type-safe and guarded so anonymous browsing does not crash at runtime. Use the core-infrastructure component patterns for actor creation. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Ensure all imports reference the new concrete backend module and that queries/mutations remain safe when actor is unavailable (no runtime crashes during initial load)."
+        },
+        {
+          "path": "frontend/src/components/SubjectCard.tsx",
+          "operation": "modify",
+          "description": "Harden study material rendering so calling material.file.getDirectURL() cannot crash if the returned value is not an ExternalBlob instance at runtime (e.g., add a safe fallback/guard before opening). This prevents runtime crashes on the Subjects section after deploy."
+        },
+        {
+          "path": "frontend/src/components/Hero.tsx",
+          "operation": "modify",
+          "description": "Verify the Hero image is referenced as a static public asset and matches the workspace file frontend/public/assets/generated/hero-banner.dim_1024x400.png; adjust only if needed to avoid broken assets after deploy."
+        },
+        {
+          "path": "frontend/src/components/SubjectsSection.tsx",
+          "operation": "modify",
+          "description": "Verify all subject icon references correspond to existing static assets under frontend/public/assets/generated/ (e.g., frontend/public/assets/generated/botany-icon-transparent.dim_64x64.png) to prevent broken image requests in the deployed app."
+        },
+        {
           "path": "frontend/src/components/CoursesSection.tsx",
           "operation": "modify",
-          "description": "Expand the existing courseIcons title->asset mapping to cover newly seeded higher-education programs (e.g., M.B.A., M.C.A., LL.B., LL.M., B.Ed., M.Ed., MBBS, B.Pharm, M.Pharm), including any expected title punctuation/format variants; add defensive image handling (e.g., hide icon on load error) so missing assets do not render as broken images."
+          "description": "Verify all course icon references correspond to existing static assets under frontend/public/assets/generated/ (e.g., frontend/public/assets/generated/11th-class-icon-transparent.dim_64x64.png) and ensure the section remains resilient when icons are missing (no runtime crash)."
         }
       ]
     },
     {
-      "id": "REQ-3",
-      "summary": "Add missing generated static icon assets referenced by the updated course icon mapping.",
+      "id": "REQ-29",
+      "summary": "Add in-repo deployment troubleshooting note describing the root cause and the exact build/deploy steps.",
       "acceptanceCriteria": [
-        "All icon paths referenced by the courseIcons mapping resolve to real files in frontend/public/assets/generated.",
-        "The app loads the Courses section without 404s for generated icon assets in the browser network panel."
+        "Repository contains a short troubleshooting note that states the original failure mode, the fix applied, and the exact commands/steps to build and deploy successfully.",
+        "Instructions do not reference unsupported external services and remain applicable to this Internet Computer canister project."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/generated/mba-icon-transparent.dim_64x64.png",
+          "path": "frontend/DEPLOYMENT_TROUBLESHOOTING.md",
           "operation": "create",
-          "description": "Add the generated static icon asset for MBA and ensure the filename matches the courseIcons mapping."
-        },
-        {
-          "path": "frontend/public/assets/generated/mca-icon-transparent.dim_64x64.png",
-          "operation": "create",
-          "description": "Add the generated static icon asset for MCA and ensure the filename matches the courseIcons mapping."
-        },
-        {
-          "path": "frontend/public/assets/generated/llb-icon-transparent.dim_64x64.png",
-          "operation": "create",
-          "description": "Add the generated static icon asset for LLB and ensure the filename matches the courseIcons mapping."
-        },
-        {
-          "path": "frontend/public/assets/generated/llm-icon-transparent.dim_64x64.png",
-          "operation": "create",
-          "description": "Add the generated static icon asset for LLM and ensure the filename matches the courseIcons mapping."
-        },
-        {
-          "path": "frontend/public/assets/generated/bed-icon-transparent.dim_64x64.png",
-          "operation": "create",
-          "description": "Add the generated static icon asset for BEd and ensure the filename matches the courseIcons mapping."
-        },
-        {
-          "path": "frontend/public/assets/generated/med-icon-transparent.dim_64x64.png",
-          "operation": "create",
-          "description": "Add the generated static icon asset for MEd and ensure the filename matches the courseIcons mapping."
-        },
-        {
-          "path": "frontend/public/assets/generated/mbbs-icon-transparent.dim_64x64.png",
-          "operation": "create",
-          "description": "Add the generated static icon asset for MBBS and ensure the filename matches the courseIcons mapping."
-        },
-        {
-          "path": "frontend/public/assets/generated/bpharm-icon-transparent.dim_64x64.png",
-          "operation": "create",
-          "description": "Add the generated static icon asset for BPharm and ensure the filename matches the courseIcons mapping."
-        },
-        {
-          "path": "frontend/public/assets/generated/mpharm-icon-transparent.dim_64x64.png",
-          "operation": "create",
-          "description": "Add the generated static icon asset for MPharm and ensure the filename matches the courseIcons mapping."
+          "description": "Document the resolved frontend failure mode (e.g., missing/incorrect TS modules for backend/config imports and any TS build errors), the fix applied, and the exact local commands to run a successful build and deploy for this Internet Computer canister project (dfx build/deploy workflow), without referencing external services."
         }
       ]
     }

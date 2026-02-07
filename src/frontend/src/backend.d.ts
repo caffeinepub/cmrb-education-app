@@ -20,8 +20,10 @@ export interface UserProfile {
 export interface Course {
     id: bigint;
     title: string;
+    priceInINR?: bigint;
     description: string;
     level: Level;
+    subjectId?: string;
     category: Category;
 }
 export type SubjectIdentifier = string;
@@ -55,22 +57,23 @@ export enum UserRole {
     guest = "guest"
 }
 export interface backendInterface {
-    addCourse(title: string, description: string, category: Category, level: Level): Promise<void>;
+    addCourse(title: string, description: string, category: Category, level: Level, subjectId: string | null, priceInINR: bigint | null): Promise<void>;
     addDefaultCourses(): Promise<void>;
     addTopicToSubject(subjectId: SubjectIdentifier, topicId: TopicIdentifier, topic: Topic): Promise<void>;
     assignCallerUserRole(user: Principal, role: UserRole): Promise<void>;
     courseExists(category: Category, level: Level): Promise<boolean>;
     getAllCourses(): Promise<Array<Course>>;
+    getAllCoursesBySubject(subjectId: string): Promise<Array<Course>>;
     getCallerUserProfile(): Promise<UserProfile | null>;
     getCallerUserRole(): Promise<UserRole>;
     getCourse(id: bigint): Promise<Course>;
     getCoursesByCategory(category: Category): Promise<Array<Course>>;
     getSubjectContent(subjectId: SubjectIdentifier): Promise<SubjectContent>;
-    getSubjectDescription(subjectId: SubjectIdentifier): Promise<string>;
+    getSubjectsByCategory(category: Category): Promise<Array<SubjectIdentifier>>;
     getTopic(topicId: TopicIdentifier): Promise<Topic>;
     getTopicsBySubject(subjectId: SubjectIdentifier): Promise<Array<[TopicIdentifier, Topic]>>;
     getUserProfile(user: Principal): Promise<UserProfile | null>;
     isCallerAdmin(): Promise<boolean>;
     saveCallerUserProfile(profile: UserProfile): Promise<void>;
-    setSubjectDescription(subjectId: SubjectIdentifier, description: string): Promise<void>;
+    setSubjectContent(subjectId: SubjectIdentifier, content: SubjectContent): Promise<void>;
 }

@@ -82,6 +82,26 @@ const subjects = [
     topics: [],
     useBackendTopics: true,
   },
+  {
+    id: 'Electronics',
+    name: 'Electronics',
+    description: 'Explore the vast field of Electronics, from fundamental concepts to advanced innovations. This subject covers semiconductor devices, digital and analog electronics, signal processing, circuit theory, communications, and circuit design.',
+    icon: '/assets/generated/electronics-icon-transparent.dim_64x64.png',
+    gradient: 'from-yellow-400 to-orange-600',
+    bgColor: 'bg-yellow-50/50 dark:bg-yellow-950/20',
+    topics: [],
+    useBackendTopics: true,
+  },
+  {
+    id: 'Mathematics',
+    name: 'Mathematics',
+    description: 'Explore the world of mathematics, from fundamental concepts to advanced theories and applications. This subject covers arithmetic, algebra, calculus, geometry, statistics, probability, trigonometry, number theory, linear algebra, and discrete mathematics.',
+    icon: '/assets/generated/mathematics-icon-transparent.dim_64x64.png',
+    gradient: 'from-cyan-400 to-blue-600',
+    bgColor: 'bg-cyan-50/50 dark:bg-cyan-950/20',
+    topics: [],
+    useBackendTopics: true,
+  },
 ];
 
 export default function SubjectsSection() {

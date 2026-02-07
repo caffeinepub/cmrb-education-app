@@ -49,8 +49,10 @@ export const UserRole = IDL.Variant({
 export const Course = IDL.Record({
   'id' : IDL.Nat,
   'title' : IDL.Text,
+  'priceInINR' : IDL.Opt(IDL.Nat),
   'description' : IDL.Text,
   'level' : Level,
+  'subjectId' : IDL.Opt(IDL.Text),
   'category' : Category,
 });
 export const UserProfile = IDL.Record({ 'name' : IDL.Text });
@@ -87,7 +89,18 @@ export const idlService = IDL.Service({
     ),
   '_caffeineStorageUpdateGatewayPrincipals' : IDL.Func([], [], []),
   '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
-  'addCourse' : IDL.Func([IDL.Text, IDL.Text, Category, Level], [], []),
+  'addCourse' : IDL.Func(
+      [
+        IDL.Text,
+        IDL.Text,
+        Category,
+        Level,
+        IDL.Opt(IDL.Text),
+        IDL.Opt(IDL.Nat),
+      ],
+      [],
+      [],
+    ),
   'addDefaultCourses' : IDL.Func([], [], []),
   'addTopicToSubject' : IDL.Func(
       [SubjectIdentifier, TopicIdentifier, Topic],
@@ -97,6 +110,7 @@ export const idlService = IDL.Service({
   'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
   'courseExists' : IDL.Func([Category, Level], [IDL.Bool], ['query']),
   'getAllCourses' : IDL.Func([], [IDL.Vec(Course)], ['query']),
+  'getAllCoursesBySubject' : IDL.Func([IDL.Text], [IDL.Vec(Course)], ['query']),
   'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
   'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
   'getCourse' : IDL.Func([IDL.Nat], [Course], ['query']),
@@ -106,9 +120,9 @@ export const idlService = IDL.Service({
       [SubjectContent],
       ['query'],
     ),
-  'getSubjectDescription' : IDL.Func(
-      [SubjectIdentifier],
-      [IDL.Text],
+  'getSubjectsByCategory' : IDL.Func(
+      [Category],
+      [IDL.Vec(SubjectIdentifier)],
       ['query'],
     ),
   'getTopic' : IDL.Func([TopicIdentifier], [Topic], ['query']),
@@ -124,7 +138,7 @@ export const idlService = IDL.Service({
     ),
   'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
   'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
-  'setSubjectDescription' : IDL.Func([SubjectIdentifier, IDL.Text], [], []),
+  'setSubjectContent' : IDL.Func([SubjectIdentifier, SubjectContent], [], []),
 });
 
 export const idlInitArgs = [];
@@ -171,8 +185,10 @@ export const idlFactory = ({ IDL }) => {
   const Course = IDL.Record({
     'id' : IDL.Nat,
     'title' : IDL.Text,
+    'priceInINR' : IDL.Opt(IDL.Nat),
     'description' : IDL.Text,
     'level' : Level,
+    'subjectId' : IDL.Opt(IDL.Text),
     'category' : Category,
   });
   const UserProfile = IDL.Record({ 'name' : IDL.Text });
@@ -209,7 +225,18 @@ export const idlFactory = ({ IDL }) => {
       ),
     '_caffeineStorageUpdateGatewayPrincipals' : IDL.Func([], [], []),
     '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
-    'addCourse' : IDL.Func([IDL.Text, IDL.Text, Category, Level], [], []),
+    'addCourse' : IDL.Func(
+        [
+          IDL.Text,
+          IDL.Text,
+          Category,
+          Level,
+          IDL.Opt(IDL.Text),
+          IDL.Opt(IDL.Nat),
+        ],
+        [],
+        [],
+      ),
     'addDefaultCourses' : IDL.Func([], [], []),
     'addTopicToSubject' : IDL.Func(
         [SubjectIdentifier, TopicIdentifier, Topic],
@@ -219,6 +246,11 @@ export const idlFactory = ({ IDL }) => {
     'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
     'courseExists' : IDL.Func([Category, Level], [IDL.Bool], ['query']),
     'getAllCourses' : IDL.Func([], [IDL.Vec(Course)], ['query']),
+    'getAllCoursesBySubject' : IDL.Func(
+        [IDL.Text],
+        [IDL.Vec(Course)],
+        ['query'],
+      ),
     'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
     'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
     'getCourse' : IDL.Func([IDL.Nat], [Course], ['query']),
@@ -228,9 +260,9 @@ export const idlFactory = ({ IDL }) => {
         [SubjectContent],
         ['query'],
       ),
-    'getSubjectDescription' : IDL.Func(
-        [SubjectIdentifier],
-        [IDL.Text],
+    'getSubjectsByCategory' : IDL.Func(
+        [Category],
+        [IDL.Vec(SubjectIdentifier)],
         ['query'],
       ),
     'getTopic' : IDL.Func([TopicIdentifier], [Topic], ['query']),
@@ -246,7 +278,7 @@ export const idlFactory = ({ IDL }) => {
       ),
     'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
     'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
-    'setSubjectDescription' : IDL.Func([SubjectIdentifier, IDL.Text], [], []),
+    'setSubjectContent' : IDL.Func([SubjectIdentifier, SubjectContent], [], []),
   });
 };
 

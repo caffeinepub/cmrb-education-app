@@ -2,115 +2,190 @@ import { Heart } from 'lucide-react';
 import { SiInstagram, SiX, SiTelegram } from 'react-icons/si';
 
 export default function Footer() {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <footer className="border-t border-rose-200/50 bg-gradient-to-br from-rose-50/80 to-pink-50/80 dark:border-rose-900/50 dark:from-rose-950/20 dark:to-pink-950/20">
-      <div className="container mx-auto px-4 py-8">
+    <footer className="border-t border-rose-200/50 bg-muted/30 dark:border-rose-900/50">
+      <div className="container mx-auto px-4 py-12">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
+          {/* Brand */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
               <img
                 src="/assets/generated/cmrb-logo.dim_200x200.png"
                 alt="CMRB Education"
-                className="h-8 w-8 rounded-lg"
+                className="h-10 w-10 rounded-lg"
               />
-              <span className="font-bold bg-gradient-to-r from-rose-600 to-pink-600 bg-clip-text text-transparent">
-                CMRB Education
-              </span>
+              <div className="flex flex-col">
+                <span className="text-lg font-bold bg-gradient-to-r from-rose-600 to-pink-600 bg-clip-text text-transparent">
+                  CMRB Education
+                </span>
+              </div>
             </div>
             <p className="text-sm text-muted-foreground">
-              Empowering students with quality science education across multiple disciplines.
+              Empowering students with quality education and comprehensive learning resources.
             </p>
           </div>
 
+          {/* Courses */}
           <div>
-            <h3 className="mb-3 text-sm font-semibold text-foreground">Courses</h3>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <h3 className="mb-4 text-sm font-semibold">Courses</h3>
+            <ul className="space-y-2 text-sm">
               <li>
-                <a href="#courses" className="hover:text-rose-600 transition-colors">
+                <button
+                  onClick={() => scrollToSection('courses')}
+                  className="text-muted-foreground hover:text-rose-600 transition-colors"
+                >
                   All Courses
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#subjects" className="hover:text-rose-600 transition-colors">
-                  Browse by Subject
-                </a>
+                <button
+                  onClick={() => scrollToSection('courses')}
+                  className="text-muted-foreground hover:text-rose-600 transition-colors"
+                >
+                  Science
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection('courses')}
+                  className="text-muted-foreground hover:text-rose-600 transition-colors"
+                >
+                  Arts
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection('courses')}
+                  className="text-muted-foreground hover:text-rose-600 transition-colors"
+                >
+                  Commerce
+                </button>
               </li>
             </ul>
           </div>
 
+          {/* Subjects */}
           <div>
-            <h3 className="mb-3 text-sm font-semibold text-foreground">Subjects</h3>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <h3 className="mb-4 text-sm font-semibold">Subjects</h3>
+            <ul className="space-y-2 text-sm">
               <li>
-                <a href="#botany" className="hover:text-rose-600 transition-colors">
+                <a
+                  href="#Botany"
+                  className="text-muted-foreground hover:text-rose-600 transition-colors"
+                >
                   Botany
                 </a>
               </li>
               <li>
-                <a href="#chemistry" className="hover:text-rose-600 transition-colors">
+                <a
+                  href="#Chemistry"
+                  className="text-muted-foreground hover:text-rose-600 transition-colors"
+                >
                   Chemistry
                 </a>
               </li>
               <li>
-                <a href="#zoology" className="hover:text-rose-600 transition-colors">
+                <a
+                  href="#Zoology"
+                  className="text-muted-foreground hover:text-rose-600 transition-colors"
+                >
                   Zoology
                 </a>
               </li>
               <li>
-                <a href="#biotechnology" className="hover:text-rose-600 transition-colors">
+                <a
+                  href="#Biotechnology"
+                  className="text-muted-foreground hover:text-rose-600 transition-colors"
+                >
                   Biotechnology
                 </a>
               </li>
               <li>
-                <a href="#Physics" className="hover:text-rose-600 transition-colors">
+                <a
+                  href="#Physics"
+                  className="text-muted-foreground hover:text-rose-600 transition-colors"
+                >
                   Physics
                 </a>
               </li>
               <li>
-                <a href="#Geology" className="hover:text-rose-600 transition-colors">
+                <a
+                  href="#Geology"
+                  className="text-muted-foreground hover:text-rose-600 transition-colors"
+                >
                   Geology
                 </a>
               </li>
               <li>
-                <a href="#HumanBiology" className="hover:text-rose-600 transition-colors">
+                <a
+                  href="#HumanBiology"
+                  className="text-muted-foreground hover:text-rose-600 transition-colors"
+                >
                   Human Biology
                 </a>
               </li>
               <li>
-                <a href="#CurrentAffairs" className="hover:text-rose-600 transition-colors">
+                <a
+                  href="#CurrentAffairs"
+                  className="text-muted-foreground hover:text-rose-600 transition-colors"
+                >
                   Current Affairs
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#Electronics"
+                  className="text-muted-foreground hover:text-rose-600 transition-colors"
+                >
+                  Electronics
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#Mathematics"
+                  className="text-muted-foreground hover:text-rose-600 transition-colors"
+                >
+                  Mathematics
                 </a>
               </li>
             </ul>
           </div>
 
+          {/* Connect */}
           <div>
-            <h3 className="mb-3 text-sm font-semibold text-foreground">Follow Us</h3>
+            <h3 className="mb-4 text-sm font-semibold">Connect</h3>
             <div className="flex gap-4">
               <a
-                href="https://ig.com/CMRBEDUCATION"
+                href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-rose-600 transition-colors"
-                aria-label="Follow us on Instagram"
+                aria-label="Instagram"
               >
                 <SiInstagram className="h-5 w-5" />
               </a>
               <a
-                href="https://x.com/CMRBEDUCATION"
+                href="https://x.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-rose-600 transition-colors"
-                aria-label="Follow us on X"
+                aria-label="X (Twitter)"
               >
                 <SiX className="h-5 w-5" />
               </a>
               <a
-                href="https://t.me/CMRBEDUCATION"
+                href="https://telegram.org"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-rose-600 transition-colors"
-                aria-label="Follow us on Telegram"
+                aria-label="Telegram"
               >
                 <SiTelegram className="h-5 w-5" />
               </a>
@@ -118,15 +193,16 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-rose-200/50 pt-6 dark:border-rose-900/50">
-          <p className="text-center text-sm text-muted-foreground">
-            © 2025. Built with{' '}
-            <Heart className="inline h-4 w-4 text-rose-500 fill-rose-500" /> using{' '}
+        {/* Bottom */}
+        <div className="mt-12 border-t border-rose-200/50 pt-8 text-center text-sm text-muted-foreground dark:border-rose-900/50">
+          <p>
+            © 2026. Built with{' '}
+            <Heart className="inline h-4 w-4 text-rose-600 fill-rose-600" /> using{' '}
             <a
               href="https://caffeine.ai"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-rose-600 hover:text-rose-700 transition-colors"
+              className="text-rose-600 hover:underline font-medium"
             >
               caffeine.ai
             </a>

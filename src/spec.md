@@ -1,12 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Expand the app’s higher-education course catalog (UG/PG/Doctoral) and ensure the Courses UI correctly displays the expanded list with appropriate icons.
+**Goal:** Resolve the current deployment error and ensure the project’s standard build and deploy workflow completes successfully for both the Motoko backend canister and the React frontend assets.
 
 **Planned changes:**
-- Expand backend default course seeding (addDefaultCourses) to include a broader set of higher-education programs across Science, Arts, and Commerce for Undergraduate, Postgraduate, and Doctoral levels, ensuring every seeded course has a non-empty title and description and uses existing Category/Level enums.
-- Ensure the course listing endpoint (getAllCourses) returns the expanded seeded catalog sorted by id.
-- Extend the frontend course title-to-icon mapping to cover newly added course titles, and ensure the Courses grid renders new items with category badges and descriptions without broken icons.
-- Add any missing generated icon assets referenced by the updated icon mapping under `frontend/public/assets/generated` with filenames matching the mapping.
+- Investigate the root cause of the deployment failure and apply the minimal code/config fixes needed to restore a clean build for both backend and frontend.
+- Verify end-to-end deploy succeeds and the deployed app is reachable and renders the main sections (Hero, Subjects, Courses) without runtime crashes.
+- Add a short, developer-facing troubleshooting note in the repository documenting the original failure mode, the fix, and exact build/deploy commands to reproduce success.
 
-**User-visible outcome:** The Courses section shows a much larger, comprehensive higher-education catalog (UG/PG/Doctoral) with category badges and descriptions, and course icons appear where available without broken image placeholders.
+**User-visible outcome:** The app deploys successfully, loads in the browser, and renders the Hero, Subjects, and Courses sections without errors.

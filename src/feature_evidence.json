@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-courses-ui-to-display-icons-for-any-newly-added-course-titles-by-extending-the-existing-title-icon-mapping-and-ensure-all-new-courses-render-correctly-in-the-courses-grid-with-their-category-badge-and-description-no-broken-image-icons",
-      "featureTitle": "Update the Courses UI to display icons for any newly added course titles by extending the existing title->icon mapping, and ensure all new courses render correctly in the courses grid with their category badge and description (no broken image icons).",
+      "featureId": "feature-investigate-and-fix-the-deployment-error-that-is-preventing-the-project-from-deploying-successfully-and-ensure-the-standard-build-deploy-workflow-completes-without-errors-for-both-the-motoko-backend-canister-and-the-react-frontend-assets",
+      "featureTitle": "Investigate and fix the deployment error that is preventing the project from deploying successfully, and ensure the standard build + deploy workflow completes without errors for both the Motoko backend canister and the React frontend assets.",
       "files": [
-        "frontend/src/components/CoursesSection.tsx"
+        "frontend/src/components/SubjectCard.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -17,14 +17,16 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-2"
+        "REQ-28"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-add-any-missing-static-icon-assets-required-by-the-updated-course-icon-mapping-as-generated-images-under-frontend-public-assets-generated-and-ensure-the-filenames-match-the-mapping-used-in-the-ui",
-      "featureTitle": "Add any missing static icon assets required by the updated course icon mapping as generated images under frontend/public/assets/generated and ensure the filenames match the mapping used in the UI.",
-      "files": [],
+      "featureId": "feature-add-a-lightweight-developer-facing-deployment-troubleshooting-note-in-repo-documentation-describing-the-resolved-root-cause-and-the-steps-to-reproduce-a-successful-build-and-deploy-going-forward",
+      "featureTitle": "Add a lightweight, developer-facing deployment troubleshooting note (in-repo documentation) describing the resolved root cause and the steps to reproduce a successful build and deploy going forward.",
+      "files": [
+        "frontend/DEPLOYMENT_TROUBLESHOOTING.md"
+      ],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
@@ -35,7 +37,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-3"
+        "REQ-29"
       ],
       "confidence": "high"
     }

@@ -28,6 +28,19 @@ export function useGetCoursesByCategory(category: Category) {
   });
 }
 
+export function useGetCoursesBySubject(subjectId: string) {
+  const { actor, isFetching } = useActor();
+
+  return useQuery<Course[]>({
+    queryKey: ['courses', 'subject', subjectId],
+    queryFn: async () => {
+      if (!actor) return [];
+      return actor.getAllCoursesBySubject(subjectId);
+    },
+    enabled: !!actor && !isFetching && !!subjectId,
+  });
+}
+
 export function useAddCourse() {
   const { actor } = useActor();
   const queryClient = useQueryClient();
@@ -45,7 +58,7 @@ export function useAddCourse() {
       level: Level;
     }) => {
       if (!actor) throw new Error('Actor not initialized');
-      return actor.addCourse(title, description, category, level);
+      return actor.addCourse(title, description, category, level, null, null);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['courses'] });
@@ -79,8 +92,9 @@ export function useGetTopic(topicId: TopicIdentifier) {
   });
 }
 
-export function useGetSubjectContent(subjectId: SubjectIdentifier) {
+export function useGetSubjectContent(subjectId: SubjectIdentifier, options?: { enabled?: boolean }) {
   const { actor, isFetching } = useActor();
+  const enabledOption = options?.enabled !== undefined ? options.enabled : true;
 
   return useQuery<SubjectContent>({
     queryKey: ['subjectContent', subjectId],
@@ -88,7 +102,8 @@ export function useGetSubjectContent(subjectId: SubjectIdentifier) {
       if (!actor) throw new Error('Actor not initialized');
       return actor.getSubjectContent(subjectId);
     },
-    enabled: !!actor && !isFetching && !!subjectId,
+    enabled: !!actor && !isFetching && !!subjectId && enabledOption,
+    retry: 1,
   });
 }
 

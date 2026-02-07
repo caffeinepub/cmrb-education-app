@@ -29,14 +29,16 @@ export default function Header() {
   };
 
   const subjects = [
-    { name: 'Botany', id: 'botany' },
-    { name: 'Chemistry', id: 'chemistry' },
-    { name: 'Zoology', id: 'zoology' },
-    { name: 'Biotechnology', id: 'biotechnology' },
+    { name: 'Botany', id: 'Botany' },
+    { name: 'Chemistry', id: 'Chemistry' },
+    { name: 'Zoology', id: 'Zoology' },
+    { name: 'Biotechnology', id: 'Biotechnology' },
     { name: 'Physics', id: 'Physics' },
     { name: 'Geology', id: 'Geology' },
     { name: 'Human Biology', id: 'HumanBiology' },
     { name: 'Current Affairs', id: 'CurrentAffairs' },
+    { name: 'Electronics', id: 'Electronics' },
+    { name: 'Mathematics', id: 'Mathematics' },
   ];
 
   return (
@@ -59,33 +61,28 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:block">
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <Button
-                    variant="ghost"
+                  <button
                     onClick={() => scrollToSection('courses')}
-                    className="text-foreground hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/30"
+                    className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                   >
-                    <BookOpen className="mr-2 h-4 w-4" />
                     Courses
-                  </Button>
+                  </button>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-foreground hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/30">
-                    <FlaskConical className="mr-2 h-4 w-4" />
-                    Subjects
-                  </NavigationMenuTrigger>
+                  <NavigationMenuTrigger>Subjects</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-2 p-4">
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                       {subjects.map((subject) => (
                         <li key={subject.id}>
                           <NavigationMenuLink asChild>
                             <button
                               onClick={() => scrollToSection(subject.id)}
-                              className="block w-full text-left select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-rose-50 hover:text-rose-600 focus:bg-rose-50 focus:text-rose-600 dark:hover:bg-rose-950/30 dark:focus:bg-rose-950/30"
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground w-full text-left"
                             >
                               <div className="text-sm font-medium leading-none">
                                 {subject.name}
@@ -108,35 +105,34 @@ export default function Header() {
                 {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[280px]">
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <SheetHeader>
-                <SheetTitle className="text-left bg-gradient-to-r from-rose-600 to-pink-600 bg-clip-text text-transparent">
-                  Menu
-                </SheetTitle>
+                <SheetTitle className="text-left">Menu</SheetTitle>
               </SheetHeader>
               <nav className="mt-6 flex flex-col gap-4">
-                <Button
-                  variant="ghost"
+                <button
                   onClick={() => scrollToSection('courses')}
-                  className="justify-start text-foreground hover:text-rose-600 hover:bg-rose-50"
+                  className="flex items-center gap-2 text-lg font-medium hover:text-rose-600 transition-colors"
                 >
-                  <BookOpen className="mr-2 h-4 w-4" />
+                  <BookOpen className="h-5 w-5" />
                   Courses
-                </Button>
-                <div className="space-y-2">
-                  <p className="px-4 text-sm font-semibold text-muted-foreground">
+                </button>
+                <div className="border-t pt-4">
+                  <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground mb-3">
+                    <FlaskConical className="h-4 w-4" />
                     Subjects
-                  </p>
-                  {subjects.map((subject) => (
-                    <Button
-                      key={subject.id}
-                      variant="ghost"
-                      onClick={() => scrollToSection(subject.id)}
-                      className="w-full justify-start pl-8 text-foreground hover:text-rose-600 hover:bg-rose-50"
-                    >
-                      {subject.name}
-                    </Button>
-                  ))}
+                  </div>
+                  <div className="flex flex-col gap-2 pl-6">
+                    {subjects.map((subject) => (
+                      <button
+                        key={subject.id}
+                        onClick={() => scrollToSection(subject.id)}
+                        className="text-left text-sm hover:text-rose-600 transition-colors py-1"
+                      >
+                        {subject.name}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </nav>
             </SheetContent>

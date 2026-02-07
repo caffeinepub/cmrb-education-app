@@ -1,85 +1,57 @@
 {
   "kind": "build_request",
-  "title": "Add comprehensive higher-education course catalog (UG/PG/Doctoral)",
-  "priority": "normal",
+  "title": "Resolve deployment error and complete build/deploy",
+  "priority": "high",
   "requirements": [
     {
-      "id": "REQ-1",
-      "text": "Expand the backend default course seeding so the app includes a comprehensive set of higher-education courses across Science, Arts, and Commerce categories, covering Undergraduate, Postgraduate, and Doctoral levels (in addition to the currently seeded items). Add commonly expected degree programs such as B.C.A., B.B.A., M.B.A., M.C.A., LL.B., LL.M., B.Ed., M.Ed., B.Pharm, M.Pharm, MBBS, and other widely recognized higher-education programs; ensure each added course has a non-empty title and description and uses the existing Category and Level enums.",
-      "target": "backend",
+      "id": "REQ-28",
+      "text": "Investigate and fix the deployment error that is preventing the project from deploying successfully, and ensure the standard build + deploy workflow completes without errors for both the Motoko backend canister and the React frontend assets.",
+      "target": "both",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-3"
         ],
         "quotes": [
-          "add all course for higher education"
+          "START BUILD"
         ]
       },
       "acceptanceCriteria": [
-        "Calling the existing admin seeding entrypoint (addDefaultCourses) results in a larger catalog that includes commonly expected higher-education degrees (e.g., B.C.A., B.B.A., M.B.A., M.C.A., LL.B., B.Ed., etc.) across available categories/levels.",
-        "getAllCourses returns the expanded list sorted by id without traps.",
-        "No newly added seeded course has an empty title or empty description."
+        "A clean build completes for both backend and frontend with no errors.",
+        "A deploy completes successfully (no deployment error) and produces a reachable, functioning app.",
+        "The deployed app loads in the browser and can render the main sections (Hero, Subjects, Courses) without runtime crashes."
       ]
     },
     {
-      "id": "REQ-2",
-      "text": "Update the Courses UI to display icons for any newly added course titles by extending the existing title->icon mapping, and ensure all new courses render correctly in the courses grid with their category badge and description (no broken image icons).",
-      "target": "frontend",
+      "id": "REQ-29",
+      "text": "Add a lightweight, developer-facing deployment troubleshooting note (in-repo documentation) describing the resolved root cause and the steps to reproduce a successful build and deploy going forward.",
+      "target": "unknown",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-3"
         ],
         "quotes": [
-          "add all course for higher education"
+          "START BUILD"
         ]
       },
       "acceptanceCriteria": [
-        "For every newly added course title that is seeded by the backend, the Courses section either shows the correct course icon (if provided) or omits the icon gracefully (no broken image placeholder).",
-        "The Courses section lists the newly seeded higher-education courses after data refresh, with category badges displayed and descriptions visible (line-clamped as currently implemented)."
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "text": "Add any missing static icon assets required by the updated course icon mapping as generated images under frontend/public/assets/generated and ensure the filenames match the mapping used in the UI.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "add all course for higher education"
-        ]
-      },
-      "acceptanceCriteria": [
-        "All icon paths referenced by the courseIcons mapping resolve to real files in frontend/public/assets/generated.",
-        "The app loads the Courses section without 404s for generated icon assets in the browser network panel."
+        "Repository contains a short troubleshooting note that states the original failure mode, the fix applied, and the exact commands/steps to build and deploy successfully.",
+        "Instructions do not reference unsupported external services and remain applicable to this Internet Computer canister project."
       ]
     }
   ],
   "constraints": [
-    "Backend must remain a single Motoko actor in backend/main.mo (no additional backend services).",
-    "Do not edit files under frontend/src/components/ui or other frontend immutablePaths; compose existing UI components instead.",
-    "Use English for any user-facing text."
+    "Backend must remain a single Motoko actor in backend/main.mo; do not introduce additional backend services.",
+    "Do not edit any frontend files under frontend/src/components/ui or any other paths listed as immutable in SYSTEM_CONTEXT.",
+    "Use English for any user-facing text.",
+    "Do not introduce unsupported technologies or integrations (no external DBs, no non-Internet-Identity auth, no WebSockets, no external cloud deployments)."
   ],
   "nonGoals": [
-    "Adding third-party authentication providers (only Internet Identity is allowed).",
-    "Adding external databases or non-IC storage systems.",
-    "Building a full degree taxonomy/standardization system beyond adding a broader seeded list of higher-education courses."
+    "Do not add new course/subject/topic features beyond what is required to resolve the deployment failure.",
+    "Do not redesign the UI or add new UI sections as part of this deployment fix unless necessary to prevent build/runtime errors.",
+    "Do not change data models or stable state shape unless it is required to fix deployment (and only then with a conditional migration per project policy)."
   ],
   "imageRequirements": {
-    "required": [
-      "Minimal flat icon for \"BCA\" on transparent background (bca-icon-transparent.dim_64x64.png)",
-      "Minimal flat icon for \"BBA\" on transparent background (bba-icon-transparent.dim_64x64.png)",
-      "Minimal flat icon for \"MBA\" on transparent background (mba-icon-transparent.dim_64x64.png)",
-      "Minimal flat icon for \"MCA\" on transparent background (mca-icon-transparent.dim_64x64.png)",
-      "Minimal flat icon for \"LLB\" on transparent background (llb-icon-transparent.dim_64x64.png)",
-      "Minimal flat icon for \"LLM\" on transparent background (llm-icon-transparent.dim_64x64.png)",
-      "Minimal flat icon for \"BEd\" on transparent background (bed-icon-transparent.dim_64x64.png)",
-      "Minimal flat icon for \"MEd\" on transparent background (med-icon-transparent.dim_64x64.png)",
-      "Minimal flat icon for \"MBBS\" on transparent background (mbbs-icon-transparent.dim_64x64.png)",
-      "Minimal flat icon for \"BPharm\" on transparent background (bpharm-icon-transparent.dim_64x64.png)",
-      "Minimal flat icon for \"MPharm\" on transparent background (mpharm-icon-transparent.dim_64x64.png)"
-    ],
+    "required": [],
     "edits": []
   }
 }

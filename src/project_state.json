@@ -1,11 +1,15 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
-  "summary": "Project to include higher education courses.",
-  "architectural_notes": [],
-  "known_issues": [],
+  "projectStateVersion": 17,
+  "summary": "Project to include higher education and pre-university (Class 11/12) courses with subject-wise topics and full descriptions.",
+  "architectural_notes": [
+    "Support course pricing in INR as part of the course model and ensure frontend displays it consistently.",
+    "Add a PDF generation/export mechanism for subject/topic content (all topics with full descriptions)."
+  ],
+  "known_issues": [
+    "Live deployment unsuccessful: Deployment error encountered during deploy (draft Version 23)."
+  ],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Minimal flat icon for \"BCA\" on transparent background (bca-icon-transparent.dim_64x64.png)\n- Minimal flat icon for \"BBA\" on transparent background (bba-icon-transparent.dim_64x64.png)\n- Minimal flat icon for \"MBA\" on transparent background (mba-icon-transparent.dim_64x64.png)\n- Minimal flat icon for \"MCA\" on transparent background (mca-icon-transparent.dim_64x64.png)\n- Minimal flat icon for \"LLB\" on transparent background (llb-icon-transparent.dim_64x64.png)\n- Minimal flat icon for \"LLM\" on transparent background (llm-icon-transparent.dim_64x64.png)\n- Minimal flat icon for \"BEd\" on transparent background (bed-icon-transparent.dim_64x64.png)\n- Minimal flat icon for \"MEd\" on transparent background (med-icon-transparent.dim_64x64.png)\n- Minimal flat icon for \"MBBS\" on transparent background (mbbs-icon-transparent.dim_64x64.png)\n- Minimal flat icon for \"BPharm\" on transparent background (bpharm-icon-transparent.dim_64x64.png)\n- Minimal flat icon for \"MPharm\" on transparent background (mpharm-icon-transparent.dim_64x64.png)",
   "existing_features": [
     {
       "id": "feature-update-the-courses-ui-to-display-icons-for-any-newly-added-course-titles-by-extending-the-existing-title-icon-mapping-and-ensure-all-new-courses-render-correctly-in-the-courses-grid-with-their-category-badge-and-description-no-broken-image-icons",
@@ -22,6 +26,110 @@
         "REQ-3"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-ensure-the-frontend-subjects-ui-displays-the-backend-provided-full-subject-description-and-each-topic-s-full-description-in-the-subject-topic-list-for-every-subject-card-that-uses-backend-topics",
+      "title": "Ensure the frontend Subjects UI displays the backend-provided full subject description and each topic’s full description in the subject topic list for every subject card that uses backend topics.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-backend-returns-subject-wise-topics-via-the-existing-subject-content-api-used-by-the-frontend-getsubjectcontent-such-that-the-subjects-ui-displays-all-backend-topics-for-each-subject-card-with-usebackendtopics-enabled",
+      "title": "Ensure the backend returns subject-wise topics via the existing subject content API used by the frontend (getSubjectContent), such that the Subjects UI displays all backend topics for each subject card with useBackendTopics enabled.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-frontend-subjects-section-configuration-to-include-an-electronics-subject-card-id-electronics-name-electronics-with-usebackendtopics-enabled-so-the-card-displays-the-backend-provided-electronics-subject-description-and-the-backend-provided-list-of-topics-with-full-descriptions",
+      "title": "Update the frontend Subjects section configuration to include an \"Electronics\" subject card (id: \"Electronics\", name: \"Electronics\") with useBackendTopics enabled so the card displays the backend-provided Electronics subject description and the backend-provided list of topics with full descriptions.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-generated-static-icon-asset-for-the-electronics-subject-under-frontend-public-assets-generated-and-reference-it-from-the-new-electronics-subject-card-configuration",
+      "title": "Add a new generated static icon asset for the Electronics subject under frontend/public/assets/generated and reference it from the new Electronics subject card configuration.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-frontend-to-let-users-browse-courses-subject-wise-in-addition-to-the-existing-featured-courses-grid-using-the-new-backend-subject-wise-courses-api",
+      "title": "Update the frontend to let users browse courses subject-wise (in addition to the existing \"Featured Courses\" grid), using the new backend subject-wise courses API.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-mathematics-subject-card-to-the-frontend-subjects-section-and-ensure-it-uses-backend-topics-content-usebackendtopics-enabled-so-the-card-displays-the-backend-provided-full-description-and-topics-with-full-descriptions",
+      "title": "Add a Mathematics subject card to the frontend Subjects section and ensure it uses backend topics/content (useBackendTopics enabled) so the card displays the backend-provided full description and topics with full descriptions.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-frontend-course-catalog-ui-to-display-the-inr-price-for-each-course-when-present-using-english-user-facing-text-and-an-inr-currency-format-e-g-199",
+      "title": "Update the frontend course catalog UI to display the INR price for each course when present, using English user-facing text and an INR currency format (e.g., \"₹199\").",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-new-course-titles-11th-botany-11th-zoology-11th-chemistry-11th-physics-and-12th-science-render-cleanly-in-the-courses-grid-including-icon-behavior-with-no-broken-image-icons",
+      "title": "Ensure the new course titles \"11th Botany\", \"11th Zoology\", \"11th Chemistry\", \"11th Physics\", and \"12th Science\" render cleanly in the Courses grid (including icon behavior) with no broken image icons.",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-frontend-subjects-section-configuration-to-include-a-new-statics-subject-card-id-statics-name-statics-with-usebackendtopics-enabled-so-it-displays-the-backend-provided-statics-subject-description-and-the-backend-provided-list-of-topics-with-full-descriptions-using-the-existing-subjectcard-behavior",
+      "title": "Update the frontend Subjects section configuration to include a new \"Statics\" subject card (id: \"Statics\", name: \"Statics\") with useBackendTopics enabled, so it displays the backend-provided Statics subject description and the backend-provided list of topics with full descriptions using the existing SubjectCard behavior.",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-and-add-a-static-icon-asset-for-the-new-statics-subject-under-frontend-public-assets-generated-and-reference-it-from-the-new-statics-subject-card-configuration-so-no-broken-image-icon-appears",
+      "title": "Generate and add a static icon asset for the new \"Statics\" subject under frontend/public/assets/generated, and reference it from the new Statics subject card configuration so no broken image icon appears.",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-pdf-generation-export-mechanism-so-users-can-export-subject-topic-content-all-topics-with-full-descriptions-to-pdf-files-using-only-in-app-client-side-capabilities-no-external-services",
+      "title": "Add a PDF generation/export mechanism so users can export subject/topic content (all topics with full descriptions) to PDF files, using only in-app/client-side capabilities (no external services).",
+      "reqIds": [
+        "REQ-27"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-investigate-and-fix-the-deployment-error-that-is-preventing-the-project-from-deploying-successfully-and-ensure-the-standard-build-deploy-workflow-completes-without-errors-for-both-the-motoko-backend-canister-and-the-react-frontend-assets",
+      "title": "Investigate and fix the deployment error that is preventing the project from deploying successfully, and ensure the standard build + deploy workflow completes without errors for both the Motoko backend canister and the React frontend assets.",
+      "reqIds": [
+        "REQ-28"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-lightweight-developer-facing-deployment-troubleshooting-note-in-repo-documentation-describing-the-resolved-root-cause-and-the-steps-to-reproduce-a-successful-build-and-deploy-going-forward",
+      "title": "Add a lightweight, developer-facing deployment troubleshooting note (in-repo documentation) describing the resolved root cause and the steps to reproduce a successful build and deploy going forward.",
+      "reqIds": [
+        "REQ-29"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -36,6 +144,182 @@
       "summary": "Expand the backend default course seeding so the app includes a comprehensive set of higher-education courses across Science, Arts, and Commerce categories, covering Undergraduate, Postgraduate, and Doctoral levels (in addition to the currently seeded items). Add commonly expected degree programs such as B.C.A., B.B.A., M.B.A., M.C.A., LL.B., LL.M., B.Ed., M.Ed., B.Pharm, M.Pharm, MBBS, and other widely recognized higher-education programs; ensure each added course has a non-empty title and description and uses the existing Category and Level enums.",
       "reqIds": [
         "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Add subject-wise topics for courses, each with a full description (i.e., expand content beyond course list into detailed topic/subject descriptions).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Expand backend subject content so each predefined subject supports a full subject description and a subject-specific list of topics where every topic includes a non-empty full description.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Populate backend subject content so each predefined subject used by the frontend Subjects section has a non-empty, subject-specific list of topics (with non-empty title and non-empty description for every topic). At minimum, implement this for subject identifiers: Botany, Chemistry, Zoology, Biotechnology, Physics, Geology, HumanBiology, and CurrentAffairs.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Add an Electronics subject to the backend subject content, including a full subject description and a subject-specific list of topics where each topic has a non-empty full description, so it can be displayed in the frontend Subjects UI.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Extend the backend subject content dataset to include a new subject identifier \"Electronics\" with a non-empty full subject description and a subject-specific list of topics where every topic includes a non-empty title and a non-empty full description, and ensure this content is returned by the existing getSubjectContent(\"Electronics\") API used by the frontend.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Add a new Mathematics subject in the backend subject content with a full subject description and a subject-specific list of topics where each topic includes a non-empty full description (same format as existing subjects).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Add/expand course catalog entries for Science, Commerce, and Arts, including Class 11, Class 12, B.Sc., and M.Sc. levels as applicable, ensuring each course has a non-empty title and description and uses existing enums.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Add a Science stream/specialization for Agriculture Science (under Science) as part of the course catalog and ensure it displays correctly in the app.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Organize/structure all courses subject-wise (i.e., ensure courses are grouped or mapped by subject area in the content model/UI so users can browse courses by subject).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Add a subject-wise course organization model in the backend so courses can be retrieved grouped by subject identifier (e.g., \"Physics\", \"Chemistry\", \"Mathematics\", \"Electronics\"), without removing or breaking the existing course APIs.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Populate/seed subject-wise course mappings for all existing default courses so users can browse courses by subject area (at minimum covering the existing subject identifiers used by the frontend Subjects section: Botany, Chemistry, Zoology, Biotechnology, Physics, Geology, HumanBiology, CurrentAffairs, Electronics; and the newly requested Mathematics).",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Add the \"Agriculture Science\" stream under the Science course catalog and include it in the subject-wise organization so it appears when browsing Science-related subjects.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Add Mathematics subject content in the backend in the same format as existing subjects: a non-empty full subject description and a list of topics where every topic has a non-empty title and a non-empty full description, returned via the existing getSubjectContent(subjectId) API.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Add a new subject \"Statics\" (Engineering Mechanics: Statics) to backend subject content with a full subject description and a list of topics where each topic has a non-empty full description.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-17",
+      "summary": "Add a \"Statics\" subject card to the frontend Subjects section (useBackendTopics enabled) and include a matching static icon asset under frontend/public/assets/generated.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-18",
+      "summary": "Include \"Statics\" in the backend subject-wise course organization/mapping so Statics-related courses appear when browsing by subject.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-19",
+      "summary": "Expand the course catalog to include subject/stream-specific courses across Class 11, Class 12, UG (e.g., B.Sc./B.Com./B.A.), PG (M.Sc./M.Com./M.A.), and Ph.D. levels for: Science (Botany, Zoology, Chemistry, Biotechnology, Physics, Geology, Human Biology, Mathematics, Electronics, Statics) and Commerce (Business Management, Economics, Accountancy) and Arts (Hindi Literature, History, Rajasthani Literature, Political Science, Geography, Sociology, Ethics). Ensure each has non-empty title/description and uses existing enums.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "Add pricing for specific courses: Class 11 Botany/Zoology/Chemistry/Physics priced at 199 INR; Class 12 Science priced at 299 INR (and ensure the price is displayed/handled consistently in the app).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-21",
+      "summary": "Provide all topics with full descriptions in PDF files (generate/export PDFs containing the topic content).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-22",
+      "summary": "Extend the backend Course model to support course pricing in INR and expose this pricing data through existing course query APIs (e.g., getAllCourses, getCoursesByCategory, getAllCoursesBySubject, getCourse).",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-23",
+      "summary": "Add new Science courses in the backend default course seeding for: (1) \"11th Botany\" priced at 199 INR, mapped to subjectId \"Botany\"; (2) \"11th Zoology\" priced at 199 INR, mapped to subjectId \"Zoology\"; (3) \"11th Chemistry\" priced at 199 INR, mapped to subjectId \"Chemistry\"; (4) \"11th Physics\" priced at 199 INR, mapped to subjectId \"Physics\"; (5) \"12th Science\" priced at 299 INR, mapped to the relevant Science subjectIds so it appears under subject-wise browsing.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-24",
+      "summary": "If adding the new Course price field changes the stable data shape for existing deployments, add a conditional backend migration (backend/migration.mo per project policy) so previously stored courses can be upgraded safely with a default price value.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-25",
+      "summary": "Add a new backend subject identifier \"Statics\" (Engineering Mechanics: Statics) to the existing subject content dataset so that getSubjectContent(\"Statics\") returns a non-empty subject description and a subject-specific list of topics where every topic has a non-empty title and a non-empty full description.",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-28",
+      "summary": "Include \"Statics\" in the backend subject-wise course organization/mapping so Statics-related courses appear when browsing courses by subject, without removing or breaking existing course APIs.",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-29",
+      "summary": "Expand the backend default course seeding to include additional subject/stream-specific courses across Science (including Statics), Commerce (Business Management, Economics, Accountancy), and Arts (Hindi Literature, History, Rajasthani Literature, Political Science, Geography, Sociology, Ethics), ensuring each added course has a non-empty title and description and uses the existing Category and Level enums.",
+      "reqIds": [
+        "REQ-26"
       ],
       "status": "pending"
     }
