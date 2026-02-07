@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Project to include higher education courses.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Minimal flat icon for \"BCA\" on transparent background (bca-icon-transparent.dim_64x64.png)\n- Minimal flat icon for \"BBA\" on transparent background (bba-icon-transparent.dim_64x64.png)\n- Minimal flat icon for \"MBA\" on transparent background (mba-icon-transparent.dim_64x64.png)\n- Minimal flat icon for \"MCA\" on transparent background (mca-icon-transparent.dim_64x64.png)\n- Minimal flat icon for \"LLB\" on transparent background (llb-icon-transparent.dim_64x64.png)\n- Minimal flat icon for \"LLM\" on transparent background (llm-icon-transparent.dim_64x64.png)\n- Minimal flat icon for \"BEd\" on transparent background (bed-icon-transparent.dim_64x64.png)\n- Minimal flat icon for \"MEd\" on transparent background (med-icon-transparent.dim_64x64.png)\n- Minimal flat icon for \"MBBS\" on transparent background (mbbs-icon-transparent.dim_64x64.png)\n- Minimal flat icon for \"BPharm\" on transparent background (bpharm-icon-transparent.dim_64x64.png)\n- Minimal flat icon for \"MPharm\" on transparent background (mpharm-icon-transparent.dim_64x64.png)",
+  "existing_features": [
+    {
+      "id": "feature-update-the-courses-ui-to-display-icons-for-any-newly-added-course-titles-by-extending-the-existing-title-icon-mapping-and-ensure-all-new-courses-render-correctly-in-the-courses-grid-with-their-category-badge-and-description-no-broken-image-icons",
+      "title": "Update the Courses UI to display icons for any newly added course titles by extending the existing title->icon mapping, and ensure all new courses render correctly in the courses grid with their category badge and description (no broken image icons).",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-any-missing-static-icon-assets-required-by-the-updated-course-icon-mapping-as-generated-images-under-frontend-public-assets-generated-and-ensure-the-filenames-match-the-mapping-used-in-the-ui",
+      "title": "Add any missing static icon assets required by the updated course icon mapping as generated images under frontend/public/assets/generated and ensure the filenames match the mapping used in the UI.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Add all courses for higher education",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Expand the backend default course seeding so the app includes a comprehensive set of higher-education courses across Science, Arts, and Commerce categories, covering Undergraduate, Postgraduate, and Doctoral levels (in addition to the currently seeded items). Add commonly expected degree programs such as B.C.A., B.B.A., M.B.A., M.C.A., LL.B., LL.M., B.Ed., M.Ed., B.Pharm, M.Pharm, MBBS, and other widely recognized higher-education programs; ensure each added course has a non-empty title and description and uses the existing Category and Level enums.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Add comprehensive higher-education course catalog (UG/PG/Doctoral)",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

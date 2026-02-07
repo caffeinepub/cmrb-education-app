@@ -1,0 +1,22 @@
+{
+  "backend/main.mo": "Actor canister implementing user profiles, access control, course management, and subject/topic storage with permission‑gated CRUD operations.",
+  "feature_evidence.json": "Feature evidence report listing UI-related course icon updates and required asset generation for frontend components.",
+  "frontend-file-summaries.txt": "Plain-text summaries of various frontend files describing their roles in the app’s UI, hooks, styles, and layout.",
+  "frontend/index.css": "Tailwind base configuration defining color tokens and theming variables for light and dark modes.",
+  "frontend/index.html": "Base HTML file bootstrapping the React frontend via main.tsx.",
+  "frontend/src/App.tsx": "Root React component wiring theming and rendering the main layout including header, hero, courses, subjects, and footer.",
+  "frontend/src/components/CoursesSection.tsx": "UI section fetching and displaying courses with category badges, icon mapping, loading skeletons, and fallback handling for missing icons.",
+  "frontend/src/components/Footer.tsx": "Footer with branding, navigation links, subject links, and social media icons.",
+  "frontend/src/components/Header.tsx": "Top navigation bar with logo, smooth-scroll links, subject dropdown, and mobile sheet menu.",
+  "frontend/src/components/Hero.tsx": "A hero section component with gradient styling, introductory text, and buttons that scroll to course and subject sections.",
+  "frontend/src/components/SubjectCard.tsx": "Displays a subject card with dynamic topic loading, collapsible topic list, and study material links.",
+  "frontend/src/components/SubjectsSection.tsx": "Renders a grid of predefined subjects, each configured for backend-loaded topics using SubjectCard.",
+  "frontend/src/hooks/useActor.ts": "Creates and manages a backend actor instance tied to Internet Identity and refreshes dependent queries when identity changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides context and hooks for managing Internet Identity authentication, including login, logout, and identity persistence.",
+  "frontend/src/hooks/useQueries.ts": "Defines React Query hooks for fetching and mutating courses, subjects, topics, and subject content via the backend actor.",
+  "frontend/src/index.css": "Defines Tailwind layers and extensive OKLCH CSS variables for light/dark rose-themed UI plus scrollbar and base element styling.",
+  "frontend/src/main.tsx": "Bootstraps the React app, wrapping it with InternetIdentity and React Query providers.",
+  "frontend/src/utils/urlParams.ts": "Provides helpers to read, persist, and clear URL parameters using query strings, hashes, and sessionStorage.",
+  "frontend/tailwind.config.js": "Configures Tailwind with dark mode, custom OKLCH color variables, extended theme settings, and plugins.",
+  "project_state.json": "Stores project metadata, feature states, image requirements, and pending requests for expanding higher‑education course content."
+}

@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Category } from '../backend';
+import { useState } from 'react';
 
 const categoryColors: Record<Category, string> = {
   [Category.Science]: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
@@ -29,7 +30,33 @@ const courseIcons: Record<string, string> = {
   'M.A.': '/assets/generated/ma-icon-transparent.dim_64x64.png',
   'Ph.D.': '/assets/generated/phd-icon-transparent.dim_64x64.png',
   'M.Com.': '/assets/generated/mcom-icon-transparent.dim_64x64.png',
+  'M.B.A.': '/assets/generated/mba-icon-transparent.dim_64x64.png',
+  'M.C.A.': '/assets/generated/mca-icon-transparent.dim_64x64.png',
+  'LL.B.': '/assets/generated/llb-icon-transparent.dim_64x64.png',
+  'LL.M.': '/assets/generated/llm-icon-transparent.dim_64x64.png',
+  'B.Ed.': '/assets/generated/bed-icon-transparent.dim_64x64.png',
+  'M.Ed.': '/assets/generated/med-icon-transparent.dim_64x64.png',
+  'MBBS': '/assets/generated/mbbs-icon-transparent.dim_64x64.png',
+  'B.Pharm': '/assets/generated/bpharm-icon-transparent.dim_64x64.png',
+  'M.Pharm': '/assets/generated/mpharm-icon-transparent.dim_64x64.png',
 };
+
+function CourseIcon({ src, alt }: { src: string; alt: string }) {
+  const [hasError, setHasError] = useState(false);
+
+  if (hasError) {
+    return null;
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className="h-10 w-10 object-contain"
+      onError={() => setHasError(true)}
+    />
+  );
+}
 
 export default function CoursesSection() {
   const { data: courses, isLoading } = useGetAllCourses();
@@ -81,11 +108,7 @@ export default function CoursesSection() {
                         {course.category}
                       </Badge>
                       {iconSrc && (
-                        <img
-                          src={iconSrc}
-                          alt={`${course.title} icon`}
-                          className="h-10 w-10 object-contain"
-                        />
+                        <CourseIcon src={iconSrc} alt={`${course.title} icon`} />
                       )}
                     </div>
                     <CardTitle className="text-xl group-hover:text-rose-600 transition-colors">

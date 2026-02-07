@@ -63,17 +63,6 @@ actor {
     #Doctoral;
   };
 
-  type Subject = {
-    #Botany;
-    #Chemistry;
-    #Zoology;
-    #Biotechnology;
-    #Physics;
-    #Geology;
-    #CurrentAffairs;
-    #HumanBiology;
-  };
-
   type StudyMaterial = {
     title : Text;
     file : Storage.ExternalBlob;
@@ -159,6 +148,10 @@ actor {
     await addScienceCourses();
     await addArtsCourses();
     await addCommerceCourses();
+    await addProfessionalCourses();
+    await addLawCourses();
+    await addEducationCourses();
+    await addPharmacyAndMedicalCourses();
   };
 
   func addScienceCourses() : async () {
@@ -287,6 +280,84 @@ actor {
       "Doctor of Philosophy degree program providing the highest level of academic achievement in commerce and business studies. This doctoral program emphasizes original research, business innovation, and scholarly contribution, preparing students for careers in higher education, business research, and executive leadership positions.",
       #Commerce,
       #Doctoral,
+    );
+  };
+
+  func addProfessionalCourses() : async () {
+    await addCourse(
+      "B.C.A.",
+      "Bachelor of Computer Applications (BCA) is an undergraduate degree program focusing on computer science, software development, and information technology. This course covers programming languages, database management, web development, and system analysis, preparing students for careers in the IT industry and paving the way for higher studies like MCA (Master of Computer Applications).",
+      #Science,
+      #Undergraduate,
+    );
+    await addCourse(
+      "B.B.A.",
+      "Bachelor of Business Administration (BBA) is an undergraduate degree program that provides a solid foundation in business management, leadership, and entrepreneurial skills. Covering topics such as marketing, finance, human resources, and operations management, this course prepares students for careers in business, startups, and further education such as MBA (Master of Business Administration).",
+      #Commerce,
+      #Undergraduate,
+    );
+    await addCourse(
+      "M.B.A.",
+      "Master of Business Administration (MBA) is a postgraduate program designed to develop advanced business management, analytical, and strategic leadership skills. This course covers finance, marketing, operations, and human resources, preparing graduates for leadership roles in corporate organizations, entrepreneurship, and specialized consulting careers.",
+      #Commerce,
+      #Postgraduate,
+    );
+    await addCourse(
+      "M.C.A.",
+      "Master of Computer Applications (MCA) is a postgraduate program focusing on advanced computer science, software development, and information systems. Covering programming, networking, database management, and system security, this course prepares students for specialized roles in software engineering, IT project management, and research in the technology sector.",
+      #Science,
+      #Postgraduate,
+    );
+  };
+
+  func addLawCourses() : async () {
+    await addCourse(
+      "LL.B.",
+      "Bachelor of Laws (LL.B.) is an undergraduate law degree that provides comprehensive knowledge of legal theories, principles, and practices. This course covers constitutional law, criminal law, civil procedures, and legal research, preparing graduates for legal practice, judiciary, and further academic pursuits such as LL.M. (Master of Laws).",
+      #Arts,
+      #Undergraduate,
+    );
+    await addCourse(
+      "LL.M.",
+      "Master of Laws (LL.M.) is a postgraduate program that offers advanced theoretical and practical knowledge in specialized areas of law. This course emphasizes legal research and analysis, preparing graduates for high-level legal careers, academic positions, and specialized consultancy in the legal field.",
+      #Arts,
+      #Postgraduate,
+    );
+  };
+
+  func addEducationCourses() : async () {
+    await addCourse(
+      "B.Ed.",
+      "Bachelor of Education (B.Ed.) is an undergraduate program focused on teacher training, educational methodologies, and classroom management. This course emphasizes curriculum design, educational assessment, and practical teaching experience, preparing graduates for careers in primary and secondary education.",
+      #Arts,
+      #Undergraduate,
+    );
+    await addCourse(
+      "M.Ed.",
+      "Master of Education (M.Ed.) is a postgraduate program designed to enhance skills in educational leadership, curriculum design, and research methodology. This course prepares graduates for educational administration, academic research, and development of innovative teaching practices.",
+      #Arts,
+      #Postgraduate,
+    );
+  };
+
+  func addPharmacyAndMedicalCourses() : async () {
+    await addCourse(
+      "B.Pharm",
+      "Bachelor of Pharmacy (B.Pharm) is an undergraduate program focusing on pharmaceutical sciences, drug development, and clinical training. This course covers pharmacology, medicinal chemistry, pharmacognosy, practical experience in pharmacy practice, and prepares graduates for roles in the pharmaceutical industry, clinical research, and healthcare services.",
+      #Science,
+      #Undergraduate,
+    );
+    await addCourse(
+      "M.Pharm",
+      "Master of Pharmacy (M.Pharm) is a postgraduate program that offers advanced study in pharmaceutical sciences, emphasizing research and development. This course covers clinical drug development, regulatory affairs, clinical research, and advanced pharmacological studies, preparing graduates for careers in pharmaceutical research, academic posts, and drug regulatory departments.",
+      #Science,
+      #Postgraduate,
+    );
+    await addCourse(
+      "MBBS",
+      "Bachelor of Medicine, Bachelor of Surgery (MBBS) is an undergraduate professional degree in medicine and surgery. This course provides comprehensive medical education, including clinical training, surgical practice, and research, preparing graduates for careers as licensed medical practitioners, healthcare researchers, and public health specialists.",
+      #Science,
+      #Undergraduate,
     );
   };
 

@@ -1,0 +1,49 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-07T08:09:18.779Z",
+  "summary": "Frontend course icon mapping was extended with graceful fallback rendering, but the diff summary does not show added static icon assets and does not provide enough evidence that backend default course seeding was expanded as required. Unrequested changes/files were also introduced.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "Expand the backend default course seeding (addDefaultCourses) to include a comprehensive UG/PG/Doctoral higher-education catalog across Science/Arts/Commerce, including degrees like B.C.A., B.B.A., M.B.A., M.C.A., LL.B., LL.M., B.Ed., M.Ed., B.Pharm, M.Pharm, MBBS, with non-empty titles/descriptions, using existing enums, and ensuring getAllCourses returns sorted by id without traps.",
+      "reason": "backend/main.mo is truncated before showing the implementations of addScienceCourses/addArtsCourses/addCommerceCourses and the actual seeded course list. The diff summary does not contain evidence of new seeded courses being added or that the expanded catalog meets the comprehensive coverage described.",
+      "evidence": [
+        "backend/main.mo (truncated at addDefaultCourses: calls to addScienceCourses/addArtsCourses; seeding details not shown)"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "requirement": "Add missing static icon assets under frontend/public/assets/generated matching the filenames referenced by the courseIcons mapping (including BCA/BBA/MBA/MCA/LLB/LLM/BEd/MEd/MBBS/BPharm/MPharm icons).",
+      "reason": "No files under frontend/public/assets/generated are shown as added/modified in the diff summary; therefore the required icon PNG assets are not evidenced as present.",
+      "evidence": [
+        "File diff summary: Added files list contains only project_state.json; no frontend/public/assets/generated entries",
+        "frontend/src/components/CoursesSection.tsx (references /assets/generated/*.png but assets not shown as added)"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Added project_state.json tracking feature requests/status (AR-1..AR-4).",
+      "reason": "The BuildRequest does not ask for adding project management/state metadata files.",
+      "evidence": [
+        "project_state.json"
+      ]
+    },
+    {
+      "description": "Modified Internet Identity hook implementation (useInternetIdentity.ts).",
+      "reason": "The BuildRequest explicitly lists non-goals around adding third-party auth providers and does not request any authentication-related changes; modifying this file is outside the requested scope.",
+      "evidence": [
+        "frontend/src/hooks/useInternetIdentity.ts"
+      ]
+    }
+  ],
+  "confidence": 0.63,
+  "changed_files": [
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/src/components/CoursesSection.tsx",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "project_state.json"
+  ]
+}

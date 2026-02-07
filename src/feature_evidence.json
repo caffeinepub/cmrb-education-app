@@ -1,0 +1,43 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-update-the-courses-ui-to-display-icons-for-any-newly-added-course-titles-by-extending-the-existing-title-icon-mapping-and-ensure-all-new-courses-render-correctly-in-the-courses-grid-with-their-category-badge-and-description-no-broken-image-icons",
+      "featureTitle": "Update the Courses UI to display icons for any newly added course titles by extending the existing title->icon mapping, and ensure all new courses render correctly in the courses grid with their category badge and description (no broken image icons).",
+      "files": [
+        "frontend/src/components/CoursesSection.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "blob-storage@4.0.0",
+        "authorization@4.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-any-missing-static-icon-assets-required-by-the-updated-course-icon-mapping-as-generated-images-under-frontend-public-assets-generated-and-ensure-the-filenames-match-the-mapping-used-in-the-ui",
+      "featureTitle": "Add any missing static icon assets required by the updated course icon mapping as generated images under frontend/public/assets/generated and ensure the filenames match the mapping used in the UI.",
+      "files": [],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "blob-storage@4.0.0",
+        "authorization@4.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

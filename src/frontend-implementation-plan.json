@@ -1,0 +1,77 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Higher-education course catalog UI icon support",
+  "requirements": [
+    {
+      "id": "REQ-2",
+      "summary": "Extend Courses UI title-to-icon mapping and ensure new courses render with badges/descriptions without broken icons.",
+      "acceptanceCriteria": [
+        "For every newly added course title that is seeded by the backend, the Courses section either shows the correct course icon (if provided) or omits the icon gracefully (no broken image placeholder).",
+        "The Courses section lists the newly seeded higher-education courses after data refresh, with category badges displayed and descriptions visible (line-clamped as currently implemented)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/CoursesSection.tsx",
+          "operation": "modify",
+          "description": "Expand the existing courseIcons title->asset mapping to cover newly seeded higher-education programs (e.g., M.B.A., M.C.A., LL.B., LL.M., B.Ed., M.Ed., MBBS, B.Pharm, M.Pharm), including any expected title punctuation/format variants; add defensive image handling (e.g., hide icon on load error) so missing assets do not render as broken images."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add missing generated static icon assets referenced by the updated course icon mapping.",
+      "acceptanceCriteria": [
+        "All icon paths referenced by the courseIcons mapping resolve to real files in frontend/public/assets/generated.",
+        "The app loads the Courses section without 404s for generated icon assets in the browser network panel."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/mba-icon-transparent.dim_64x64.png",
+          "operation": "create",
+          "description": "Add the generated static icon asset for MBA and ensure the filename matches the courseIcons mapping."
+        },
+        {
+          "path": "frontend/public/assets/generated/mca-icon-transparent.dim_64x64.png",
+          "operation": "create",
+          "description": "Add the generated static icon asset for MCA and ensure the filename matches the courseIcons mapping."
+        },
+        {
+          "path": "frontend/public/assets/generated/llb-icon-transparent.dim_64x64.png",
+          "operation": "create",
+          "description": "Add the generated static icon asset for LLB and ensure the filename matches the courseIcons mapping."
+        },
+        {
+          "path": "frontend/public/assets/generated/llm-icon-transparent.dim_64x64.png",
+          "operation": "create",
+          "description": "Add the generated static icon asset for LLM and ensure the filename matches the courseIcons mapping."
+        },
+        {
+          "path": "frontend/public/assets/generated/bed-icon-transparent.dim_64x64.png",
+          "operation": "create",
+          "description": "Add the generated static icon asset for BEd and ensure the filename matches the courseIcons mapping."
+        },
+        {
+          "path": "frontend/public/assets/generated/med-icon-transparent.dim_64x64.png",
+          "operation": "create",
+          "description": "Add the generated static icon asset for MEd and ensure the filename matches the courseIcons mapping."
+        },
+        {
+          "path": "frontend/public/assets/generated/mbbs-icon-transparent.dim_64x64.png",
+          "operation": "create",
+          "description": "Add the generated static icon asset for MBBS and ensure the filename matches the courseIcons mapping."
+        },
+        {
+          "path": "frontend/public/assets/generated/bpharm-icon-transparent.dim_64x64.png",
+          "operation": "create",
+          "description": "Add the generated static icon asset for BPharm and ensure the filename matches the courseIcons mapping."
+        },
+        {
+          "path": "frontend/public/assets/generated/mpharm-icon-transparent.dim_64x64.png",
+          "operation": "create",
+          "description": "Add the generated static icon asset for MPharm and ensure the filename matches the courseIcons mapping."
+        }
+      ]
+    }
+  ]
+}
