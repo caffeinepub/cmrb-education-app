@@ -1,0 +1,11 @@
+{
+  "frontend/src/App.tsx": "Main application component that sets up ThemeProvider and renders the complete page structure with Header, Hero, CoursesSection, SubjectsSection, Footer, and Toaster components.",
+  "frontend/src/hooks/useQueries.ts": "Custom React Query hooks for fetching courses, topics, and subject content from the backend, including useAddCourse with Level parameter support and useGetSubjectContent for comprehensive subject data retrieval.",
+  "frontend/src/components/Header.tsx": "Responsive navigation header with logo, desktop navigation menu with subjects dropdown including all eight subjects (Botany, Chemistry, Zoology, Biotechnology, Physics, Geology, Human Biology, Current Affairs), and mobile sheet menu with smooth scroll navigation.",
+  "frontend/src/components/Hero.tsx": "Hero section with gradient background, welcome badge, heading with rose gradient text, description, CTA buttons, and hero banner image.",
+  "frontend/src/components/CoursesSection.tsx": "Displays all courses in a responsive grid with category badges, course-specific icons for all courses including new additions (B.Arch., B.Tech, B.E., M.Sc., M.Arch., M.Tech., M.E., M.A., Ph.D., M.Com.), loading skeletons, and empty state handling.",
+  "frontend/src/components/SubjectsSection.tsx": "Grid layout showcasing eight subject areas including the new Human Biology subject with comprehensive educational descriptions as fallbacks, all configured to fetch full descriptions and topics from the backend using useBackendTopics flag.",
+  "frontend/src/components/SubjectCard.tsx": "Individual subject card component that displays subject icon, comprehensive description from backend, and collapsible topic list with detailed educational descriptions and study materials.",
+  "frontend/src/components/Footer.tsx": "Footer component with logo, navigation links organized by sections (Courses, Subjects including all eight subjects with Human Biology), social media icons for Instagram, X, and Telegram, and attribution with love icon linking to caffeine.ai.",
+  "frontend/src/index.css": "Global styles with rose-themed OKLCH color system for both light and dark modes, custom scrollbar styling, and smooth scrolling behavior."
+}

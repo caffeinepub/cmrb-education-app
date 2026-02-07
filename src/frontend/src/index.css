@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.75rem;
+        
+        /* Rose-themed light mode colors */
+        --background: 0.99 0.005 10;
+        --foreground: 0.15 0.02 10;
+        
+        --card: 1 0 0;
+        --card-foreground: 0.15 0.02 10;
+        
+        --popover: 1 0 0;
+        --popover-foreground: 0.15 0.02 10;
+        
+        --primary: 0.55 0.18 10;
+        --primary-foreground: 0.99 0.005 10;
+        
+        --secondary: 0.97 0.015 10;
+        --secondary-foreground: 0.45 0.15 10;
+        
+        --muted: 0.96 0.01 10;
+        --muted-foreground: 0.50 0.05 10;
+        
+        --accent: 0.97 0.02 350;
+        --accent-foreground: 0.45 0.15 350;
+        
+        --destructive: 0.55 0.22 15;
+        --destructive-foreground: 0.99 0 0;
+        
+        --border: 0.92 0.01 10;
+        --input: 0.92 0.01 10;
+        --ring: 0.55 0.18 10;
+        
+        --chart-1: 0.60 0.18 140;
+        --chart-2: 0.55 0.20 200;
+        --chart-3: 0.65 0.18 40;
+        --chart-4: 0.60 0.20 280;
+        --chart-5: 0.55 0.18 10;
+        
+        --sidebar: 0.99 0.005 10;
+        --sidebar-foreground: 0.15 0.02 10;
+        --sidebar-primary: 0.55 0.18 10;
+        --sidebar-primary-foreground: 0.99 0.005 10;
+        --sidebar-accent: 0.97 0.015 10;
+        --sidebar-accent-foreground: 0.45 0.15 10;
+        --sidebar-border: 0.92 0.01 10;
+        --sidebar-ring: 0.55 0.18 10;
+    }
+
+    .dark {
+        /* Rose-themed dark mode colors */
+        --background: 0.12 0.02 10;
+        --foreground: 0.97 0.01 10;
+        
+        --card: 0.18 0.025 10;
+        --card-foreground: 0.97 0.01 10;
+        
+        --popover: 0.15 0.02 10;
+        --popover-foreground: 0.97 0.01 10;
+        
+        --primary: 0.70 0.20 350;
+        --primary-foreground: 0.12 0.02 10;
+        
+        --secondary: 0.22 0.03 10;
+        --secondary-foreground: 0.97 0.01 10;
+        
+        --muted: 0.22 0.03 10;
+        --muted-foreground: 0.65 0.05 10;
+        
+        --accent: 0.28 0.04 350;
+        --accent-foreground: 0.97 0.01 10;
+        
+        --destructive: 0.60 0.22 15;
+        --destructive-foreground: 0.97 0.01 10;
+        
+        --border: 0.25 0.03 10;
+        --input: 0.25 0.03 10;
+        --ring: 0.65 0.18 350;
+        
+        --chart-1: 0.65 0.18 140;
+        --chart-2: 0.60 0.20 200;
+        --chart-3: 0.70 0.18 40;
+        --chart-4: 0.65 0.20 280;
+        --chart-5: 0.70 0.20 350;
+        
+        --sidebar: 0.15 0.02 10;
+        --sidebar-foreground: 0.97 0.01 10;
+        --sidebar-primary: 0.70 0.20 350;
+        --sidebar-primary-foreground: 0.97 0.01 10;
+        --sidebar-accent: 0.22 0.03 10;
+        --sidebar-accent-foreground: 0.97 0.01 10;
+        --sidebar-border: 0.25 0.03 10;
+        --sidebar-ring: 0.65 0.18 350;
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-background text-foreground;
+        font-feature-settings: "rlig" 1, "calt" 1;
+    }
+    
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Custom scrollbar with rose theme */
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        @apply bg-rose-50 dark:bg-rose-950/20;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        @apply bg-rose-300 dark:bg-rose-700 rounded-full;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-rose-400 dark:bg-rose-600;
+    }
+}
+
